@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — mr ilyas abdi ali</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0f; color: #e0e0e0;
+      min-height: 100vh;
+      background: radial-gradient(ellipse at 30% 20%, rgba(108,92,231,0.06) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 80%, rgba(0,206,201,0.04) 0%, transparent 50%),
+                  #0a0a0f;
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10,10,15,0.8); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .logo { font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, #6c5ce7, #00cec9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+
+    .page-header { padding: 8rem 2rem 3rem; text-align: center; }
+    .page-header h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; }
+    .page-header p { color: rgba(255,255,255,0.5); margin-top: 0.75rem; max-width: 500px; margin: 0.75rem auto 0; }
+    .highlight { background: linear-gradient(135deg, #6c5ce7, #00cec9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .contact-section { max-width: 800px; margin: 0 auto; padding: 0 2rem 5rem; }
+    .contact-card {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 2.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.4rem; color: rgba(255,255,255,0.7); }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 0.85rem 1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; color: #fff;
+      font-family: 'Inter', sans-serif; font-size: 0.9rem;
+      transition: border-color 0.3s; outline: none;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: rgba(108,92,231,0.4); }
+    .form-group textarea { resize: vertical; min-height: 150px; }
+    .form-error { color: #ff6b6b; font-size: 0.8rem; margin-top: 0.3rem; display: none; }
+    .btn {
+      width: 100%; padding: 0.85rem; border-radius: 10px;
+      font-weight: 600; font-size: 0.95rem; border: none;
+      cursor: pointer; transition: all 0.4s; font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      color: #fff; box-shadow: 0 4px 25px rgba(108,92,231,0.25);
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 35px rgba(108,92,231,0.4); }
+    .success-msg { display: none; background: rgba(0,206,201,0.1); border: 1px solid rgba(0,206,201,0.2); border-radius: 10px; padding: 0.75rem; color: #00cec9; font-size: 0.9rem; margin-top: 1rem; text-align: center; }
+
+    .contact-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    .meta-item { text-align: center; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.04); }
+    .meta-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .meta-label { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
+    .meta-value { font-size: 0.85rem; font-weight: 500; margin-top: 0.2rem; }
+
+    footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.35); font-size: 0.85rem; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0.8rem 1.2rem; }
+      .nav-links { gap: 1rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-meta { grid-template-columns: 1fr; }
+      .contact-section { padding: 0 1.2rem 3rem; }
+      .contact-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">AR.</div>
+    <div class="nav-links">
+      <a href="landing.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="login.html" style="padding:0.5rem 1.2rem;border-radius:8px;border:1px solid rgba(108,92,231,0.5);background:rgba(108,92,231,0.1);color:#6c5ce7;font-weight:600;font-size:0.85rem;">Sign In</a>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <h1>Get In <span class="highlight">Touch</span></h1>
+    <p>Have a question, project idea, or just want to say hi? I'd love to hear from you.</p>
+  </div>
+
+  <div class="contact-section">
+    <div class="contact-meta">
+      <div class="meta-item"><div class="meta-icon">📧</div><div class="meta-label">Email</div><div class="meta-value">alex@example.com</div></div>
+      <div class="meta-item"><div class="meta-icon">📍</div><div class="meta-label">Location</div><div class="meta-value">San Francisco, CA</div></div>
+      <div class="meta-item"><div class="meta-icon">💼</div><div class="meta-label">Status</div><div class="meta-value">Open to work</div></div>
+    </div>
+
+    <div class="contact-card">
+      <form id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="John Doe" required />
+            <div class="form-error" id="nameError">Please enter your name</div>
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" placeholder="john@example.com" required />
+            <div class="form-error" id="emailError">Please enter a valid email</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" placeholder="Project Inquiry" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell me about your project, idea, or just say hello..." required></textarea>
+          <div class="form-error" id="msgError">Please enter a message</div>
+        </div>
+        <button type="submit" class="btn">Send Message &#8594;</button>
+        <div class="success-msg" id="successMsg">✨ Message sent! I'll get back to you within 24 hours.</div>
+      </form>
+    </div>
+  </div>
+
+  <footer>&copy; 2026 Alex Rivera. Built with ❤️</footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+      ['nameError', 'emailError', 'msgError'].forEach(id => document.getElementById(id).style.display = 'none');
+
+      if (!this.name.value.trim()) { document.getElementById('nameError').style.display = 'block'; valid = false; }
+      if (!this.email.value.trim() || !/\S+@\S+\.\S+/.test(this.email.value)) { document.getElementById('emailError').style.display = 'block'; valid = false; }
+      if (!this.message.value.trim()) { document.getElementById('msgError').style.display = 'block'; valid = false; }
+
+      if (valid) {
+        document.getElementById('successMsg').style.display = 'block';
+        this.reset();
+        setTimeout(() => document.getElementById('successMsg').style.display = 'none', 5000);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account — mr ilyas abdi ali</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* Same base styles as login.html */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0f;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: radial-gradient(ellipse at 50% 0%, rgba(108,92,231,0.08) 0%, transparent 60%),
+                  #0a0a0f;
+    }
+    .auth-container { width: 100%; max-width: 420px; }
+    .auth-card {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 2.5rem;
+    }
+    .auth-logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #6c5ce7, #00cec9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      margin-bottom: 0.25rem;
+    }
+    .auth-title { text-align: center; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .auth-subtitle { text-align: center; color: rgba(255,255,255,0.45); font-size: 0.9rem; margin-bottom: 2rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.4rem; color: rgba(255,255,255,0.7); }
+    .form-group input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .form-group input:focus { border-color: rgba(108, 92, 231, 0.4); }
+    .btn {
+      width: 100%;
+      padding: 0.85rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      color: #fff;
+      box-shadow: 0 4px 25px rgba(108, 92, 231, 0.25);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 35px rgba(108, 92, 231, 0.4); }
+    .auth-footer { text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.45); }
+    .auth-footer a { color: #a29bfe; text-decoration: none; font-weight: 500; }
+    .auth-footer a:hover { text-decoration: underline; }
+    .error-msg {
+      background: rgba(255,107,107,0.1);
+      border: 1px solid rgba(255,107,107,0.2);
+      border-radius: 10px;
+      padding: 0.75rem;
+      color: #ff6b6b;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .success-msg {
+      background: rgba(0,206,201,0.1);
+      border: 1px solid rgba(0,206,201,0.2);
+      border-radius: 10px;
+      padding: 0.75rem;
+      color: #00cec9;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: #fff; }
+    .spinner {
+      display: inline-block;
+      width: 18px; height: 18px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      vertical-align: middle;
+      margin-right: 0.4rem;
+    }
+    .password-strength {
+      height: 4px;
+      border-radius: 4px;
+      margin-top: 0.4rem;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .password-strength-bar {
+      height: 100%;
+      width: 0%;
+      border-radius: 4px;
+      transition: width 0.3s, background 0.3s;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .terms-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.2rem;
+    }
+    .terms-check input { margin-top: 0.15rem; accent-color: #6c5ce7; }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <a href="landing.html" class="back-link">&#8592; Back to Home</a>
+      <div class="auth-logo">AR.</div>
+      <div class="auth-title">Create Account</div>
+      <div class="auth-subtitle">Join the developer community</div>
+      <div class="error-msg" id="errorMsg"></div>
+      <div class="success-msg" id="successMsg">Account created! Check your email for verification.</div>
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="mr ilyas abdi ali" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="At least 6 characters" minlength="6" required />
+          <div class="password-strength">
+            <div class="password-strength-bar" id="strengthBar"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="Repeat password" required />
+        </div>
+        <div class="terms-check">
+          <input type="checkbox" id="terms" required />
+          <label for="terms">I agree to the Terms of Service and Privacy Policy</label>
+        </div>
+        <button type="submit" class="btn btn-primary" id="registerBtn">
+          Create Account
+        </button>
+      </form>
+      <div class="auth-footer">
+        Already have an account? <a href="login.html">Sign in</a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { registerUser } from './firebase-config.js';
+
+    const form = document.getElementById('registerForm');
+    const errorMsg = document.getElementById('errorMsg');
+    const successMsg = document.getElementById('successMsg');
+    const btn = document.getElementById('registerBtn');
+    const passwordInput = document.getElementById('password');
+    const confirmInput = document.getElementById('confirmPassword');
+    const strengthBar = document.getElementById('strengthBar');
+
+    // Password strength indicator
+    passwordInput.addEventListener('input', () => {
+      const val = passwordInput.value;
+      let percent = 0;
+      if (val.length >= 6) percent += 25;
+      if (val.length >= 10) percent += 15;
+      if (/[A-Z]/.test(val)) percent += 20;
+      if (/[0-9]/.test(val)) percent += 20;
+      if (/[^A-Za-z0-9]/.test(val)) percent += 20;
+
+      strengthBar.style.width = Math.min(percent, 100) + '%';
+      if (percent < 30) strengthBar.style.background = '#ff6b6b';
+      else if (percent < 60) strengthBar.style.background = '#fdcb6e';
+      else strengthBar.style.background = '#00cec9';
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorMsg.style.display = 'none';
+      successMsg.style.display = 'none';
+      btn.innerHTML = '<span class="spinner"></span> Creating account...';
+      btn.disabled = true;
+
+      const email = document.getElementById('email').value;
+      const password = passwordInput.value;
+      const confirm = confirmInput.value;
+      const terms = document.getElementById('terms').checked;
+
+      if (password !== confirm) {
+        errorMsg.textContent = 'Passwords do not match';
+        errorMsg.style.display = 'block';
+        btn.innerHTML = 'Create Account';
+        btn.disabled = false;
+        return;
+      }
+
+      if (!terms) {
+        errorMsg.textContent = 'Pleaseif (!terms) {
+        errorMsg.textContent = 'Please agree to the Terms of Service';
+        errorMsg.style.display = 'block';
+        btn.innerHTML = 'Create Account';
+        btn.disabled = false;
+        return;
+      }
+
+      try {
+        await registerUser(email, password);
+        successMsg.style.display = 'block';
+        btn.innerHTML = '✓ Account Created';
+        setTimeout(() => window.location.href = 'login.html', 3000);
+      } catch (err) {
+        errorMsg.textContent = err.message.replace('Firebase: ', '');
+        errorMsg.style.display = 'block';
+        btn.innerHTML = 'Create Account';
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
